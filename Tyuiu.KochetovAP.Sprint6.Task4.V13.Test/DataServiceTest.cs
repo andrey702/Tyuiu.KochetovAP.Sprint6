@@ -47,7 +47,6 @@ namespace Tyuiu.KochetovAP.Sprint6.Task4.V13.Test
         public void CheckDirectoryCreation()
         {
             string directory = @"C:\DataSprint6\";
-т
             if (Directory.Exists(directory))
             {
                 Directory.Delete(directory, true);

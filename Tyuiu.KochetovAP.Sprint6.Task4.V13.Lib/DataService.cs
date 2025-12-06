@@ -53,6 +53,7 @@ namespace Tyuiu.KochetovAP.Sprint6.Task4.V13.Lib
                 {
                     writer.WriteLine($"{startValue + i}\t{values[i]}");
                 }
+
             }
         }
     }
