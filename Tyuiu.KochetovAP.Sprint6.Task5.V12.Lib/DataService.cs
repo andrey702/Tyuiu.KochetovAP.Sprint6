@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿
+using System.Globalization;
 using tyuiu.cources.programming.interfaces.Sprint6;
 
 namespace Tyuiu.KochetovAP.Sprint6.Task5.V12.Lib
@@ -24,7 +25,6 @@ namespace Tyuiu.KochetovAP.Sprint6.Task5.V12.Lib
                         if (string.IsNullOrWhiteSpace(line))
                             continue;
 
-                        // Заменяем запятые на точки для унификации
                         line = line.Replace(',', '.');
 
                         string[] values = line.Split(new[] { ' ', '\t', ';' },
@@ -34,7 +34,6 @@ namespace Tyuiu.KochetovAP.Sprint6.Task5.V12.Lib
                         {
                             if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
                             {
-                                // НЕ округляем числа - оставляем как есть
                                 numbers.Add(number);
                             }
                         }
@@ -48,5 +47,7 @@ namespace Tyuiu.KochetovAP.Sprint6.Task5.V12.Lib
                 throw new Exception($"Ошибка при чтении файла: {ex.Message}");
 
             }
+        }
     }
 }
+
