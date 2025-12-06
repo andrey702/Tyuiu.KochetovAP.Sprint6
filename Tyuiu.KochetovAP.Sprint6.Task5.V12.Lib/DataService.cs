@@ -25,6 +25,7 @@ namespace Tyuiu.KochetovAP.Sprint6.Task5.V12.Lib
                         if (string.IsNullOrWhiteSpace(line))
                             continue;
 
+                        // Заменяем запятые на точки для унификации
                         line = line.Replace(',', '.');
 
                         string[] values = line.Split(new[] { ' ', '\t', ';' },
@@ -34,7 +35,11 @@ namespace Tyuiu.KochetovAP.Sprint6.Task5.V12.Lib
                         {
                             if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
                             {
-                                numbers.Add(number);
+                                // Фильтруем сразу - добавляем только числа не кратные 5
+                                if (Math.Abs(number % 5) > 0.0001)
+                                {
+                                    numbers.Add(number);
+                                }
                             }
                         }
                     }
@@ -45,7 +50,6 @@ namespace Tyuiu.KochetovAP.Sprint6.Task5.V12.Lib
             catch (Exception ex)
             {
                 throw new Exception($"Ошибка при чтении файла: {ex.Message}");
-
             }
         }
     }
