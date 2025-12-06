@@ -9,42 +9,44 @@ namespace Tyuiu.KochetovAP.Sprint6.Task5.V12.Lib
         {
             List<double> numbers = new List<double>();
 
-            string fullPath = path;
-            if (!Path.IsPathRooted(path))
+            try
             {
-                fullPath = Path.Combine(@"C:\DataSprint6\", path);
-            }
-
-            if (!File.Exists(fullPath))
-            {
-                throw new FileNotFoundException($"Файл не найден: {fullPath}");
-            }
-
-            using (StreamReader reader = new StreamReader(fullPath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                if (!File.Exists(path))
                 {
-                    if (string.IsNullOrWhiteSpace(line))
-                        continue;
+                    throw new FileNotFoundException($"Файл не найден: {path}");
+                }
 
-                    line = line.Replace(',', '.');
-
-                    string[] values = line.Split(new[] { ' ', '\t', ';' },
-                                                StringSplitOptions.RemoveEmptyEntries);
-
-                    foreach (string value in values)
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
+                        if (string.IsNullOrWhiteSpace(line))
+                            continue;
+
+                        // Заменяем запятые на точки для унификации
+                        line = line.Replace(',', '.');
+
+                        string[] values = line.Split(new[] { ' ', '\t', ';' },
+                                                    StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string value in values)
                         {
-                            numbers.Add(Math.Round(number, 3));
+                            if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out double number))
+                            {
+                                // НЕ округляем числа - оставляем как есть
+                                numbers.Add(number);
+                            }
                         }
                     }
                 }
+
+                return numbers.ToArray();
             }
+            catch (Exception ex)
+            {
+                throw new Exception($"Ошибка при чтении файла: {ex.Message}");
 
-            return numbers.ToArray(); 
-
-        }
+            }
     }
 }
