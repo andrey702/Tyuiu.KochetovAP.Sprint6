@@ -70,7 +70,7 @@ namespace Tyuiu.KochetovAP.Sprint6.Task4.V13
         {
             MessageBox.Show("Табулирование функции F(x) = 3x + 2 - (2x - x)/(cos(x) + 1)\r\n" +
                            "Диапазон: [-5; 5], шаг: 1\r\n" +
-                           "Выполнил: Кочетов А.П. | Группа: ИИПб-23-1",
+                           "Выполнил: Кочетов Андрей Павлович | Группа: ИБКСб-25-1",
                            "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }

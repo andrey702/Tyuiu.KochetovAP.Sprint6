@@ -116,7 +116,7 @@
             this.MinimizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Спринт 6 | Таск 4 | Вариант 13 | Кочетов А.П.";
+            this.Text = "Спринт 6 | Таск 4 | Вариант 13 | Кочетов Андрей Павлович.";
             ((System.ComponentModel.ISupportInitialize)(this.chartFunction_KAP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
